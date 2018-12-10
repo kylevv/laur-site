@@ -5,6 +5,6 @@ script:
   - yarn test
   - yarn build
 after_script:
-  echo $TRAVIS_COMMIT
-  echo $AWS_ACCESS_KEY
-  echo $AWS_SECRET_KEY
+  echo TRAVIS_COMMIT
+  echo AWS_ACCESS_KEY
+  echo AWS_SECRET_KEY

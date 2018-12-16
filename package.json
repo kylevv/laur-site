@@ -1,6 +1,6 @@
 {
   "name": "laur-site",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
     "url": "https://github.com/kylevv/laur-site/issues"
   },
   "dependencies": {
+    "aws-sdk": "^2.375.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },

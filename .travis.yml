@@ -1,10 +1,6 @@
 language: node_js
 node_js:
   - "node"
-before_script:
-  - echo $TRAVIS_COMMIT
-  - echo $AWS_ACCESS_KEY
-  - echo $AWS_SECRET_KEY
 script:
   - yarn test
   - yarn build
@@ -18,3 +14,6 @@ deploy:
   skip_cleanup: true
   local_dir: build
   cache_control: "max-age=21600"
+after_deploy:
+  - aws configure set preview.cloudfront true
+  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"

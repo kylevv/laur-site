@@ -1,6 +1,19 @@
-language: node_js
-node_js:
-  - "node"
+language: python
+python: 3.6
+sudo: required
+dist: trusty
+env:
+  - TRAVIS_NODE_VERSION="8"
+before_install:
+  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  - sudo apt-get -qq update
+  - sudo apt-get -y install yarn
+install:
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - pip install awscli
+before_script:
+  - yarn
 script:
   - yarn test
   - yarn build
@@ -11,9 +24,33 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: laur-site
+  # Prevent Travis from deleting build so it can be uploaded
   skip_cleanup: true
   local_dir: build
   cache_control: "max-age=21600"
 after_deploy:
+  # Allow `awscli` to make requests to CloudFront
   - aws configure set preview.cloudfront true
-  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+  # Invalidate every object in the targeted distribution
+  - test $TRAVIS_BRANCH = "master" && aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+
+# language: node_js
+# node_js:
+#   - "node"
+# script:
+#   - yarn test
+#   - yarn build
+# deploy:
+#   on:
+#     branch: master
+#   provider: s3
+#   access_key_id: $AWS_ACCESS_KEY_ID
+#   secret_access_key: $AWS_SECRET_ACCESS_KEY
+#   bucket: laur-site
+#   # Prevent Travis from deleting build so it can be uploaded
+#   skip_cleanup: true
+#   local_dir: build
+#   cache_control: "max-age=21600"
+# after_deploy:
+#   - aws configure set preview.cloudfront true
+#   - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"

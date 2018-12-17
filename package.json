@@ -1,6 +1,6 @@
 {
   "name": "laur-site",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,8 @@
   "dependencies": {
     "aws-sdk": "^2.375.0",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-image-gallery": "^0.8.12"
   },
   "devDependencies": {
     "node-sass": "^4.11.0",

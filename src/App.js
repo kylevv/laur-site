@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import AWS from 'aws-sdk'
+import ImageGallery from 'react-image-gallery'
+import 'react-image-gallery/styles/scss/image-gallery.scss'
 import './App.scss'
 const Bucket = 'laur-jewelry-photos'
 const baseUrl = 'https://s3.amazonaws.com'
@@ -34,14 +36,16 @@ class App extends Component {
   }
 
   render () {
+    const images = this.state.photoKeys.map((photoKey) => {
+      let src = `${baseUrl}/${Bucket}/${photoKey}`
+      return { original: src, thumbnail: src }
+    })
     return (
       <div>
         <h1>Laur Site</h1>
-        <p>Text 1</p>
-        <p>Text 2</p>
-        {this.state.photoKeys.map((photoKey, i) =>
-          <img key={Date.now() + i} alt={photoKey} src={`${baseUrl}/${Bucket}/${photoKey}`} />
-        )}
+        {images.length &&
+          <ImageGallery items={images} thumbnailPosition='left' />
+        }
       </div>
     )
   }

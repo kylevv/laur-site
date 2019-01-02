@@ -4,7 +4,8 @@ import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import './App.scss'
 const Bucket = 'laur-jewelry-photos'
-const baseUrl = 'https://s3.amazonaws.com'
+const Prefix = 'raw/'
+const baseUrl = 'http://photos.vanvleck.com'
 
 AWS.config.region = 'us-east-1'
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -18,9 +19,8 @@ class App extends Component {
   }
 
   componentDidMount () {
-    console.log('Hello World')
     const s3 = new AWS.S3({
-      params: { Bucket }
+      params: { Bucket, Prefix }
     })
     s3.listObjects({}, (err, data) => {
       if (err) {
@@ -28,7 +28,7 @@ class App extends Component {
       } else {
         console.log('DATA:', data)
         this.setState((prevState) => {
-          const photoKeys = data.Contents.map((result) => result.Key)
+          const photoKeys = data.Contents.map((result) => result.Key.replace(Prefix, '')).filter((key) => !!key)
           return { photoKeys }
         })
       }
@@ -37,14 +37,15 @@ class App extends Component {
 
   render () {
     const images = this.state.photoKeys.map((photoKey) => {
-      let src = `${baseUrl}/${Bucket}/${photoKey}`
-      return { original: src, thumbnail: src }
+      let srcFull = `${baseUrl}/1440x960/${photoKey}`
+      let srcThumb = `${baseUrl}/150x100/${photoKey}`
+      return { original: srcFull, thumbnail: srcThumb }
     })
     return (
       <div>
         <h1>Laur Site</h1>
         {images.length &&
-          <ImageGallery items={images} thumbnailPosition='left' />
+          <ImageGallery items={images} thumbnailPosition='bottom' />
         }
       </div>
     )

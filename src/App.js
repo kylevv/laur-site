@@ -3,6 +3,7 @@ import AWS from 'aws-sdk'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import './App.scss'
+import pkg from '../package.json'
 const Bucket = 'laur-jewelry-photos'
 const Prefix = 'raw/'
 const baseUrl = 'http://photos.vanvleck.com'
@@ -44,9 +45,10 @@ class App extends Component {
     return (
       <div>
         <h1>Laur Site</h1>
-        {images.length &&
-          <ImageGallery items={images} thumbnailPosition='bottom' />
+        {!!images.length &&
+          <ImageGallery items={images} thumbnailPosition='bottom' lazyLoad />
         }
+        <footer>{'v' + pkg.version}</footer>
       </div>
     )
   }

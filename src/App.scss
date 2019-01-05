@@ -3,7 +3,7 @@ h1 {
   text-align: center;
 }
 
-.image-gallery-content {
+/*.image-gallery-content {
   .image-gallery-image {
     height: 75vh;
 
@@ -23,4 +23,20 @@ h1 {
       height: 75vh;
     }
   }
+}*/
+
+.image-gallery {
+  width: 100%;
+  margin: 0 auto;
+  transition: all 1s ease;
+
+  @media (min-width: 1024px) {
+    width: 65%;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
 }

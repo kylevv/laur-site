@@ -3,6 +3,7 @@ import AWS from 'aws-sdk'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import './App.scss'
+import LambtwistSVG from './components/LambtwistSVG'
 import pkg from '../package.json'
 const Bucket = 'laur-jewelry-photos'
 const Prefix = 'raw/'
@@ -44,11 +45,24 @@ class App extends Component {
     })
     return (
       <div>
-        <h1>Laur Site</h1>
-        {!!images.length &&
-          <ImageGallery items={images} thumbnailPosition='bottom' lazyLoad />
-        }
-        <footer>{'v' + pkg.version}</footer>
+        <nav>
+          <div className='row'>
+            <div className='lambtwist col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
+            <div className='col'>
+              <div className='name'>Laurie MacAdam</div>
+              <div className='title'>Jewelry</div>
+            </div>
+            <div className='lambtwist reverse col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
+          </div>
+        </nav>
+        <main>
+          {!!images.length &&
+            <ImageGallery items={images} thumbnailPosition='bottom' lazyLoad />
+          }
+        </main>
+        <footer>
+          <div>{'v' + pkg.version}</div>
+        </footer>
       </div>
     )
   }

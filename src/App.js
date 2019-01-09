@@ -4,6 +4,7 @@ import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import './App.scss'
 import LambtwistSVG from './components/LambtwistSVG'
+import Nav from './components/Nav'
 import pkg from '../package.json'
 const Bucket = 'laur-jewelry-photos'
 const Prefix = 'raw/'
@@ -37,6 +38,14 @@ class App extends Component {
     })
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    return true
+  }
+
+  handleClick () {
+    this.props.history.push('/')
+  }
+
   render () {
     const images = this.state.photoKeys.map((photoKey) => {
       let srcFull = `${baseUrl}/1440x960/${photoKey}`
@@ -45,16 +54,17 @@ class App extends Component {
     })
     return (
       <div>
-        <nav>
+        <header>
           <div className='row'>
-            <div className='lambtwist col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
+            <div onClick={this.handleClick.bind(this)} className='lambtwist col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
             <div className='col'>
               <div className='name'>Laurie MacAdam</div>
               <div className='title'>Jewelry</div>
             </div>
             <div className='lambtwist reverse col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
           </div>
-        </nav>
+        </header>
+        <Nav history={this.props.history} match={this.props.match} />
         <main>
           {!!images.length &&
             <ImageGallery items={images} thumbnailPosition='bottom' lazyLoad />

@@ -6,6 +6,13 @@ import BraceletSVG from '-!svg-react-loader!../assets/bracelet.svg'
 import NecklaceSVG from '-!svg-react-loader!../assets/necklace.svg'
 import EarringSVG from '-!svg-react-loader!../assets/earrings.svg'
 
+const buttons = [
+  { name: 'rings', svg: RingSVG },
+  { name: 'bracelets', svg: BraceletSVG },
+  { name: 'necklaces', svg: NecklaceSVG },
+  { name: 'earrings', svg: EarringSVG }
+]
+
 class Nav extends Component {
   constructor (props) {
     super(props)
@@ -18,20 +25,31 @@ class Nav extends Component {
 
   render () {
     const path = this.props.match.path.slice(1)
+    const size = this.props.size || 80
+    const btnStyles = {
+      width: `${size}px`,
+      height: `${size}px`,
+      'border-radius': `${size / 2}px`
+    }
     return (
       <nav>
-        <button className={classnames('btn', { selected: path === 'rings' })} name='rings' onClick={this.handleClick}>
-          <RingSVG className='svg-icon' name='rings' width='40px' height='40px' />
-        </button>
-        <button className={classnames('btn', { selected: path === 'bracelets' })} name='bracelets' onClick={this.handleClick}>
-          <BraceletSVG className='svg-icon' name='bracelets' width='40px' height='40px' />
-        </button>
-        <button className={classnames('btn', { selected: path === 'necklaces' })} name='necklaces' onClick={this.handleClick}>
-          <NecklaceSVG className='svg-icon' name='necklaces' width='40px' height='40px' />
-        </button>
-        <button className={classnames('btn', { selected: path === 'earrings' })} name='earrings' onClick={this.handleClick}>
-          <EarringSVG className='svg-icon' name='earrings' width='40px' height='40px' />
-        </button>
+        {buttons
+          .map((btn) => (
+            <button
+              style={btnStyles}
+              className={classnames('btn', { selected: path === btn.name })}
+              name={btn.name}
+              onClick={this.handleClick}
+            >
+              <btn.svg
+                className='svg-icon'
+                name={btn.name}
+                width={`${size / 2}px`}
+                height={`${size / 2}px`}
+              />
+            </button>
+          ))
+        }
       </nav>
     )
   }

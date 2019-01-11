@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import LambtwistSVG from './LambtwistSVG'
-import Nav from './Nav'
+// import Nav from './Nav'
 import pkg from '../../package.json'
 
 class App extends Component {
@@ -25,8 +25,13 @@ class App extends Component {
             <div className='lambtwist reverse col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
           </div>
         </header>
-        <Nav history={this.props.history} match={this.props.match} size={300} perCol={2} />
-        <main />
+        { /* <Nav history={this.props.history} match={this.props.match} size={300} perCol={2} /> */ }
+        <main>
+          <div className='home-nav-btn home-nav-btn--rings'>Rings</div>
+          <div className='home-nav-btn home-nav-btn--bracelets'>Bracelets</div>
+          <div className='home-nav-btn home-nav-btn--necklaces'>Necklaces</div>
+          <div className='home-nav-btn home-nav-btn--earrings'>Earrings</div>
+        </main>
         <footer>
           <div>{'v' + pkg.version}</div>
         </footer>

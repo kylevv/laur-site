@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
-import AWS from 'aws-sdk'
+import AWS from '../util/aws'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 
+const s3 = new AWS.S3()
 const Bucket = 'laur-jewelry-photos'
 const baseUrl = 'http://photos.vanvleck.com'
-
-AWS.config.region = 'us-east-1'
-AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-  IdentityPoolId: 'us-east-1:4bf908fa-88f0-4793-a819-cf1e558097c3'
-})
 
 class Gallery extends Component {
   constructor (props) {
@@ -19,22 +15,19 @@ class Gallery extends Component {
 
   componentDidMount () {
     const path = this.props.match.path
-    const s3 = new AWS.S3({
-      params: { Bucket, Prefix: `raw${path}/` }
-    })
-    s3.listObjects({}, (err, data) => {
-      if (err) {
-        console.log('ERR:', err)
-      } else {
+    s3.listObjects({ Bucket, Prefix: `raw${path}/` }).promise()
+      .then((data) => {
         console.log('DATA:', data)
+        const photoKeys = data.Contents
+          .map((result) => result.Key.replace('raw/', '').replace(/\.[^.]+$/, '.jpg'))
+          .filter((key) => !!key && key.endsWith('.jpg'))
         this.setState((prevState) => {
-          const photoKeys = data.Contents
-            .map((result) => result.Key.replace('raw/', ''))
-            .filter((key) => !!key && !key.endsWith('/'))
           return { photoKeys }
         })
-      }
-    })
+      })
+      .catch((err) => {
+        console.log('ERR:', err)
+      })
   }
 
   render () {

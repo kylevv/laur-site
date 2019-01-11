@@ -29,17 +29,18 @@ class Nav extends Component {
     const btnStyles = {
       width: `${size}px`,
       height: `${size}px`,
-      'border-radius': `${size / 2}px`
+      'borderRadius': `${size / 2}px`
     }
     return (
       <nav>
         {buttons
-          .map((btn) => (
+          .map((btn, i) => (
             <button
               style={btnStyles}
               className={classnames('btn', { selected: path === btn.name })}
               name={btn.name}
               onClick={this.handleClick}
+              key={i}
             >
               <btn.svg
                 className='svg-icon'

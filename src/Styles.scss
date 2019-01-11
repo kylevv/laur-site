@@ -117,6 +117,32 @@ main {
       width: 65%;
     }
   }
+
+  .home-nav-btn {
+    color: red;
+    height: 250px;
+    width: 80%;
+    margin: 50px auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    &--rings {
+      background-image: url('http://photos.vanvleck.com/1440x960/rings/r1.jpg');
+    }
+
+    &--bracelets {
+      background-image: url('http://photos.vanvleck.com/1440x960/bracelets/b1.jpg');
+    }
+
+    &--necklaces {
+      background-image: url('http://photos.vanvleck.com/1440x960/necklaces/n1.jpg');
+    }
+
+    &--earrings {
+      background-image: url('http://photos.vanvleck.com/1440x960/earrings/e1.jpg');
+    }
+  }
 }
 
 

@@ -1,9 +1,16 @@
 $main-grey: #323232;
 
+@font-face {
+  font-family: 'Blackberry-Jam';
+  src: url('./assets/fonts/blackberry-jam.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0px;
   background-color: black;
-  font-family: Helvetica;
+  font-family: Blackberry-Jam, Helvetica, sans-serif;
 }
 
 .row {
@@ -42,21 +49,20 @@ header {
     color: white;
     text-align: center;
     font-size: 48px;
+    font-family: Helvetica, sans-serif;
     font-weight: bold;
   }
 
   .title {
     color: white;
     text-align: center;
-    font-size: 36px;
-    font-family: Helvetica;
+    font-size: 42px;
     font-weight: normal;
   }
 
   .lambtwist {
     color: white;
     float: left;
-    width: 15%;
     margin: 10px;
     cursor: pointer;
 
@@ -66,8 +72,32 @@ header {
     }
 
     svg {
-      width: 100%;
+      width: 250px;
       height: auto;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .lambtwist.reverse {
+      margin: 0px;
+
+      svg {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 720px) {
+    .name {
+      font-size: 36px
+    }
+
+    .title {
+      font-size: 24px
+    }
+
+    .lambtwist svg {
+      width: 150px;
     }
   }
 }
@@ -169,10 +199,11 @@ footer {
   bottom: 0px;
   width: 100%;
   height: 50px;
+  font-family: Helvetica, sans-serif;
 
   div {
     position: absolute;
-    right: 2px;
+    right: 3px;
     bottom: 2px;
   }
 }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
-/* eslint-disable import/no-webpack-loader-syntax */
-import RingSVG from '-!svg-react-loader!../assets/ring.svg'
-import BraceletSVG from '-!svg-react-loader!../assets/bracelet.svg'
-import NecklaceSVG from '-!svg-react-loader!../assets/necklace.svg'
-import EarringSVG from '-!svg-react-loader!../assets/earrings.svg'
+import { ReactComponent as RingSVG } from '../assets/images/ring.svg'
+import { ReactComponent as BraceletSVG } from '../assets/images/bracelet.svg'
+import { ReactComponent as NecklaceSVG } from '../assets/images/necklace.svg'
+import { ReactComponent as EarringSVG } from '../assets/images/earrings.svg'
 
 const buttons = [
   { name: 'rings', svg: RingSVG },

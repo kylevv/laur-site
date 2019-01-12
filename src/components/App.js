@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LambtwistSVG from './LambtwistSVG'
+import { ReactComponent as LambtwistSVG } from '../assets/images/lambtwist.svg'
 import Nav from './Nav'
 import Gallery from './Gallery'
 import pkg from '../../package.json'
@@ -18,12 +18,16 @@ class App extends Component {
       <div>
         <header>
           <div className='row'>
-            <div onClick={this.handleClick.bind(this)} className='lambtwist col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
+            <div className='lambtwist col' onClick={this.handleClick.bind(this)}>
+              <LambtwistSVG className='svg-icon' />
+            </div>
             <div className='col'>
               <div className='name'>Laurie MacAdam</div>
               <div className='title'>Jewelry</div>
             </div>
-            <div className='lambtwist reverse col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
+            <div className='lambtwist reverse col'>
+              <LambtwistSVG className='svg-icon' />
+            </div>
           </div>
         </header>
         <Nav history={this.props.history} match={this.props.match} />

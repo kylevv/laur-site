@@ -8,8 +8,8 @@ class App extends Component {
     return this.props.match.path !== nextProps.match.path
   }
 
-  handleClick () {
-    this.props.history.push('/')
+  handleClick (route) {
+    this.props.history.push('/' + route)
   }
 
   render () {
@@ -17,7 +17,7 @@ class App extends Component {
       <div>
         <header>
           <div className='row'>
-            <div onClick={this.handleClick.bind(this)} className='lambtwist col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
+            <div name='' className='lambtwist col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
             <div className='col'>
               <div className='name'>Laurie MacAdam</div>
               <div className='title'>Jewelry</div>
@@ -25,12 +25,19 @@ class App extends Component {
             <div className='lambtwist reverse col' dangerouslySetInnerHTML={{ __html: LambtwistSVG() }} />
           </div>
         </header>
-        { /* <Nav history={this.props.history} match={this.props.match} size={300} perCol={2} /> */ }
         <main>
-          <div className='home-nav-btn home-nav-btn--rings'>Rings</div>
-          <div className='home-nav-btn home-nav-btn--bracelets'>Bracelets</div>
-          <div className='home-nav-btn home-nav-btn--necklaces'>Necklaces</div>
-          <div className='home-nav-btn home-nav-btn--earrings'>Earrings</div>
+          <div className='home-nav-btn home-nav-btn--rings' onClick={this.handleClick.bind(this, 'rings')}>
+            <div className='btn-text'>Rings</div>
+          </div>
+          <div className='home-nav-btn home-nav-btn--bracelets' onClick={this.handleClick.bind(this, 'bracelets')}>
+            <div className='btn-text'>Bracelets</div>
+          </div>
+          <div className='home-nav-btn home-nav-btn--necklaces' onClick={this.handleClick.bind(this, 'necklaces')}>
+            <div className='btn-text'>Necklaces</div>
+          </div>
+          <div className='home-nav-btn home-nav-btn--earrings' onClick={this.handleClick.bind(this, 'earrings')}>
+            <div className='btn-text'>Earrings</div>
+          </div>
         </main>
         <footer>
           <div>{'v' + pkg.version}</div>

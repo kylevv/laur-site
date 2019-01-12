@@ -3,13 +3,13 @@ $main-grey: #323232;
 body {
   margin: 0px;
   background-color: black;
+  font-family: Helvetica;
 }
 
 .row {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  // width: 100%;
   left: 0px;
   right: 0px;
   position: relative;
@@ -19,7 +19,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // height: 100%;
   top: 0px;
   bottom: 0px;
   position: relative;
@@ -43,7 +42,6 @@ header {
     color: white;
     text-align: center;
     font-size: 48px;
-    font-family: Helvetica;
     font-weight: bold;
   }
 
@@ -60,9 +58,11 @@ header {
     float: left;
     width: 15%;
     margin: 10px;
+    cursor: pointer;
 
     &.reverse {
       transform: scaleX(-1);
+      cursor: auto;
     }
 
     svg {
@@ -120,12 +120,21 @@ main {
 
   .home-nav-btn {
     color: red;
-    height: 250px;
+    height: 175px;
     width: 80%;
     margin: 50px auto;
+    cursor: pointer;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media (min-width: 1024px) {
+      height: 250px;
+    }
 
     &--rings {
       background-image: url('http://photos.vanvleck.com/1440x960/rings/r1.jpg');
@@ -141,6 +150,13 @@ main {
 
     &--earrings {
       background-image: url('http://photos.vanvleck.com/1440x960/earrings/e1.jpg');
+    }
+
+    .btn-text {
+      color: white;
+      font-size: 60px;
+      font-weight: 700;
+      text-shadow: 2px 2px 5px black, -1px -1px 1px black;
     }
   }
 }

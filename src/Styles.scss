@@ -17,9 +17,10 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  left: 0px;
-  right: 0px;
+  // left: 0px;
+  // right: 0px;
   position: relative;
+  width: 100%;
 }
 
 .col {
@@ -45,6 +46,17 @@ header {
   justify-content: center;
   background-color: $main-grey;
 
+  .laur {
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 60px;
+    border: 4px solid white;
+    border-radius: 12px;
+    margin-left: 40px;
+    padding: 4px;
+    cursor: pointer;
+  }
+
   .name {
     color: white;
     text-align: center;
@@ -64,11 +76,9 @@ header {
     color: white;
     float: left;
     margin: 10px;
-    cursor: pointer;
 
     &.reverse {
       transform: scaleX(-1);
-      cursor: auto;
     }
 
     svg {
@@ -103,33 +113,95 @@ header {
 }
 
 nav {
-  margin-bottom: 40px;
+  padding: 0px 40px;
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 
-  .btn {
-    // height: 80px;
-    // width: 80px;
-    background-color: $main-grey;
-    color: white;
-    // border-radius: 40px;
-    border: 5px solid white;
-    cursor: pointer;
-    transition: 0.2s ease-out;
+  svg {
+    width: 50px;
+    height: 50px;
+  }
 
-    &:hover {
-      background-color: white;
-      color: black;
-      border-color: $main-grey;
+  .nav-btn-container {
+    display: none;
+
+    .btn {
+      height: 100px;
+      width: 100px;
+      background-color: $main-grey;
+      color: white;
+      border-radius: 50px;
+      border: 5px solid white;
+      cursor: pointer;
+      transition: 0.2s ease-out;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+
+      &.selected {
+        color: yellow;
+        background-color: $main-grey;
+        border-color: white;
+      }
     }
 
-    &.selected {
-      color: yellow;
+    @media (min-width: 720px) {
+      display: inherit;
+    }
+  }
+
+  .nav-select-container {
+    display: inherit;
+
+    .nav-select-wrapper {
+      height: 100px;
+      width: 100px;
+
+      select {
+        width: 100%;
+        appearance: none;
+        border: none;
+        height: 100%;
+        background-color: $main-grey;
+        cursor: pointer;
+      }
+    }
+
+    .nav-select-selection {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
       background-color: $main-grey;
-      border-color: white;
+      color: yellow;
+      pointer-events: none;
+      border: 5px solid white;
+      border-radius: 50px;
+      box-sizing: border-box;
+
+      .svg-icon {
+        margin: 10px auto 0px auto;
+      }
+
+      .dropdown-svg {
+        color: white;
+        fill: currentColor;
+        stroke: currentColor;
+        height: 25px;
+        margin: 0px auto;
+      }
+    }
+
+    @media (min-width: 720px) {
+      display: none;
     }
   }
 }

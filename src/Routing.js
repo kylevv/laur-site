@@ -9,7 +9,7 @@ const history = createBrowserHistory({
   basename: ''
 })
 const location = history.location
-const paths = ['/rings', '/necklaces', '/bracelets', '/earrings']
+const paths = ['/rings', '/necklaces', '/bracelets', '/earrings', '/love']
 
 history.listen((location, action) => {
   console.log(location, action)

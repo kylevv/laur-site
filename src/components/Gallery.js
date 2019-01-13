@@ -37,7 +37,7 @@ class Gallery extends Component {
       return { original: srcFull, thumbnail: srcThumb }
     })
     return (
-      <main>
+      <main className='gallery'>
         {!!images.length &&
           <ImageGallery items={images} thumbnailPosition='bottom' lazyLoad />
         }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Nav from './Nav'
+import Footer from './Footer'
 import Gallery from './Gallery'
-import pkg from '../../package.json'
 
 class App extends Component {
   shouldComponentUpdate (nextProps, nextState) {
@@ -14,7 +14,7 @@ class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className='app'>
         <header>
           <div className='row'>
             <div className='laur col' onClick={this.handleClick.bind(this)}>LAUR</div>
@@ -22,9 +22,7 @@ class App extends Component {
           </div>
         </header>
         <Gallery match={this.props.match} key={this.props.match} />
-        <footer>
-          <div>{'v' + pkg.version}</div>
-        </footer>
+        <Footer />
       </div>
     )
   }

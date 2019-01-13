@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { ReactComponent as LambtwistSVG } from '../assets/images/lambtwist.svg'
-import pkg from '../../package.json'
+import Footer from './Footer'
 
 class App extends Component {
   shouldComponentUpdate (nextProps, nextState) {
@@ -13,7 +13,7 @@ class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className='app'>
         <header>
           <div className='row'>
             <div className='lambtwist col'>
@@ -42,9 +42,7 @@ class App extends Component {
             <div className='btn-text'>Earrings</div>
           </div>
         </main>
-        <footer>
-          <div>{'v' + pkg.version}</div>
-        </footer>
+        <Footer />
       </div>
     )
   }

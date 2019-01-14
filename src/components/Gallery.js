@@ -17,7 +17,6 @@ class Gallery extends Component {
     const path = this.props.match.path
     s3.listObjects({ Bucket, Prefix: `raw${path}/` }).promise()
       .then((data) => {
-        console.log('DATA:', data)
         const photoKeys = data.Contents
           .map((result) => result.Key.replace('raw/', '').replace(/\.[^.]+$/, '.jpg'))
           .filter((key) => !!key && key.endsWith('.jpg'))

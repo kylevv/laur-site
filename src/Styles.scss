@@ -3,10 +3,10 @@ $main-grey: #323232;
 @font-face {
   font-family: 'Blackberry-Jam';
   src: url('./assets/fonts/blackberry-jam.eot');
-  src: url('./assets/fonts/blackberry-jam.eot?#iefix') format('embedded-opentype'),
+  src: url('./assets/fonts/blackberry-jam.ttf') format('truetype'),
+       url('./assets/fonts/blackberry-jam.eot?#iefix') format('embedded-opentype'),
        url('./assets/fonts/blackberry-jam.woff2') format('woff2'),
-       url('./assets/fonts/blackberry-jam.woff') format('woff'),
-       url('./assets/fonts/blackberry-jam.ttf') format('truetype');
+       url('./assets/fonts/blackberry-jam.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,6 +15,22 @@ body {
   margin: 0px;
   background-color: black;
   font-family: Blackberry-Jam, Helvetica, sans-serif;
+}
+
+// FF ONLY: Remove dashed outline around select elements and set font color on dropdown menu
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 white;
+}
+
+// IE/EDGE ONLY: Removes background color of select when focused
+select::-ms-value {
+  background: none;
+}
+select {
+  option {
+    color: white;
+  }
 }
 
 .row {
@@ -159,7 +175,7 @@ nav {
       }
     }
 
-    @media (min-width: 720px) {
+    @media (min-width: 820px) {
       display: inherit;
     }
   }
@@ -209,7 +225,7 @@ nav {
       }
     }
 
-    @media (min-width: 720px) {
+    @media (min-width: 820px) {
       display: none;
     }
   }
@@ -269,6 +285,10 @@ main {
 
     &--earrings {
       background-image: url('http://photos.vanvleck.com/1440x960/earrings/e1.jpg');
+    }
+
+    &--love {
+      background-image: url('http://photos.vanvleck.com/1440x960/other/o1.jpg');
     }
 
     .btn-text {

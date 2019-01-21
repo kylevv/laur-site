@@ -4,13 +4,15 @@ import { ReactComponent as RingSVG } from '../assets/images/ring.svg'
 import { ReactComponent as BraceletSVG } from '../assets/images/bracelet.svg'
 import { ReactComponent as NecklaceSVG } from '../assets/images/necklace.svg'
 import { ReactComponent as EarringSVG } from '../assets/images/earrings.svg'
+import { ReactComponent as DiamondSVG } from '../assets/images/diamond.svg'
 import { ReactComponent as ChevronSVG } from '../assets/images/down-chevron.svg'
 
 const routes = [
   { name: '/rings', label: 'Rings', svg: RingSVG },
   { name: '/bracelets', label: 'Bracelets', svg: BraceletSVG },
   { name: '/necklaces', label: 'Necklaces', svg: NecklaceSVG },
-  { name: '/earrings', label: 'Earrings', svg: EarringSVG }
+  { name: '/earrings', label: 'Earrings', svg: EarringSVG },
+  { name: '/love', label: 'Love', svg: DiamondSVG }
 ]
 
 class Nav extends Component {

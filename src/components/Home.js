@@ -41,6 +41,9 @@ class App extends Component {
           <div className='home-nav-btn home-nav-btn--earrings' onClick={this.handleClick.bind(this, 'earrings')}>
             <div className='btn-text'>Earrings</div>
           </div>
+          <div className='home-nav-btn home-nav-btn--love' onClick={this.handleClick.bind(this, 'love')}>
+            <div className='btn-text'>Love</div>
+          </div>
         </main>
         <Footer />
       </div>

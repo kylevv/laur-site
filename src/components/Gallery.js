@@ -14,8 +14,8 @@ class Gallery extends Component {
   }
 
   componentDidMount () {
-    const path = this.props.match.path
-    s3.listObjects({ Bucket, Prefix: `raw${path}/` }).promise()
+    const category = this.props.match.path.replace('love', 'other')
+    s3.listObjects({ Bucket, Prefix: `raw${category}/` }).promise()
       .then((data) => {
         const photoKeys = data.Contents
           .map((result) => result.Key.replace('raw/', '').replace(/\.[^.]+$/, '.jpg'))

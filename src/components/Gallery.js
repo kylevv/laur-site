@@ -5,7 +5,7 @@ import 'react-image-gallery/styles/scss/image-gallery.scss'
 
 const s3 = new AWS.S3()
 const Bucket = 'laur-jewelry-photos'
-const baseUrl = 'http://www.photos.lauriemacadam.com'
+const baseUrl = 'https://www.photos.lauriemacadam.com'
 
 class Gallery extends Component {
   constructor (props) {

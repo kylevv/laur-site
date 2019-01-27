@@ -5,7 +5,7 @@ import 'react-image-gallery/styles/scss/image-gallery.scss'
 
 const s3 = new AWS.S3()
 const Bucket = 'laur-jewelry-photos'
-const baseUrl = 'http://photos.vanvleck.com'
+const baseUrl = 'http://www.photos.lauriemacadam.com'
 
 class Gallery extends Component {
   constructor (props) {
@@ -38,7 +38,14 @@ class Gallery extends Component {
     return (
       <main className='gallery'>
         {!!images.length &&
-          <ImageGallery items={images} thumbnailPosition='bottom' lazyLoad />
+          <ImageGallery
+            items={images}
+            thumbnailPosition='bottom'
+            showFullscreenButton={false}
+            showIndex
+            lazyLoad
+            preventDefaultTouchmoveEvent
+          />
         }
       </main>
     )

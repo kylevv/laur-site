@@ -11,6 +11,10 @@ $main-grey: #323232;
   font-style: normal;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0px;
   background-color: black;
@@ -138,12 +142,15 @@ header {
 }
 
 nav {
-  padding: 0px 40px;
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
+  @media (min-width: 820px) {
+    padding: 0px 40px;
+  }
 
   svg {
     width: 50px;
@@ -194,6 +201,8 @@ nav {
         height: 100%;
         background-color: $main-grey;
         cursor: pointer;
+        font-size: 16px; // prevents iOS from zooming in
+        color: transparent;
       }
     }
 
@@ -251,6 +260,14 @@ main {
     @media (min-width: 1024px) {
       width: 65%;
     }
+
+    .image-gallery-index {
+      top: auto;
+      bottom: 0;
+      background: none;
+      font-family: Helvetica, sans-serif;
+      text-shadow: 1px 1px 4px black;
+    }
   }
 
   .home-nav-btn {
@@ -272,23 +289,23 @@ main {
     }
 
     &--rings {
-      background-image: url('http://photos.vanvleck.com/1440x960/rings/r1.jpg');
+      background-image: url('http://www.photos.lauriemacadam.com/1440x960/rings/r1.jpg');
     }
 
     &--bracelets {
-      background-image: url('http://photos.vanvleck.com/1440x960/bracelets/b1.jpg');
+      background-image: url('http://www.photos.lauriemacadam.com/1440x960/bracelets/b1.jpg');
     }
 
     &--necklaces {
-      background-image: url('http://photos.vanvleck.com/1440x960/necklaces/n1.jpg');
+      background-image: url('http://www.photos.lauriemacadam.com/1440x960/necklaces/n1.jpg');
     }
 
     &--earrings {
-      background-image: url('http://photos.vanvleck.com/1440x960/earrings/e1.jpg');
+      background-image: url('http://www.photos.lauriemacadam.com/1440x960/earrings/e1.jpg');
     }
 
     &--love {
-      background-image: url('http://photos.vanvleck.com/1440x960/other/o1.jpg');
+      background-image: url('http://www.photos.lauriemacadam.com/1440x960/other/o1.jpg');
     }
 
     .btn-text {
